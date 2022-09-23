@@ -3,6 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:rxdart/subjects.dart';
 import 'package:submission2/common/navigation.dart';
 import 'package:submission2/models/listclass.dart';
+import 'dart:math';
 
 final selectNotificationSubject = BehaviorSubject<String>();
 
@@ -59,7 +60,9 @@ class NotificationHelper {
         iOS: iOSPlatformChannelSpecifics);
 
     var titleNotification = "<b>Restaurant Notification</b>";
-    var titleNews = restaurants.restaurants[0].name;
+    var rng = Random();
+    var titleNews = restaurants
+        .restaurants[rng.nextInt(restaurants.restaurants.length)].name;
 
     await flutterLocalNotificationsPlugin.show(
         0, titleNotification, titleNews, platformChannelSpecifics,
@@ -70,7 +73,10 @@ class NotificationHelper {
     selectNotificationSubject.stream.listen(
       (String payload) async {
         var data = Welcome.fromJson(json.decode(payload));
-        var restaurant = data.restaurants[0].id.toString();
+        var rng = Random();
+        var restaurant = data
+            .restaurants[rng.nextInt(data.restaurants.length)].id
+            .toString();
         Navigation.intentWithData(route, restaurant);
       },
     );
