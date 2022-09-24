@@ -17,7 +17,7 @@ class RestaurantDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: Text('Restaurant'),
+        title: const Text('Restaurant'),
       ),
       body: ChangeNotifierProvider<DetailRestaurantProvider>(
         create: (_) => DetailRestaurantProvider(
@@ -37,7 +37,7 @@ class RestaurantDetailPage extends StatelessWidget {
               child: Text(state.message),
             );
           } else {
-            return Center(
+            return const Center(
               child: Text('No Internet Connection'),
             );
           }

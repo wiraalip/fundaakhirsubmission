@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:submission2/ui/bookmarkpage.dart';
-import 'package:submission2/ui/restaurantdetailpage.dart';
 import 'package:submission2/ui/restaurantlistpage.dart';
 import 'package:submission2/ui/restaurantsearchpage.dart';
 import 'package:submission2/ui/settingpage.dart';
@@ -35,7 +34,7 @@ class RestaurantHomeScreenState extends State<RestaurantHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Restaurant')),
+      appBar: AppBar(title: const Text('Restaurant')),
       body: _option.elementAt(_selectedIndex),
       bottomNavigationBar: _makeBottomNavigationBar(),
     );

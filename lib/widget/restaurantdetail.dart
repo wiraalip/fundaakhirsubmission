@@ -22,7 +22,7 @@ class RestaurantDetailWidget extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               restaurant.name,
-              style: TextStyle(fontSize: 30),
+              style: const TextStyle(fontSize: 30),
             ),
           ),
           Padding(
@@ -32,10 +32,10 @@ class RestaurantDetailWidget extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.star, color: Colors.amber, size: 17),
+                    const Icon(Icons.star, color: Colors.amber, size: 17),
                     Text(
                       restaurant.rating.toString(),
-                      style: TextStyle(fontSize: 15),
+                      style: const TextStyle(fontSize: 15),
                     )
                   ],
                 ),
@@ -43,28 +43,28 @@ class RestaurantDetailWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 8.0),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.location_on_outlined,
                         size: 17,
                         color: Colors.red,
                       ),
                       Text(
                         restaurant.address,
-                        style: TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: 15),
                       )
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                const Padding(
+                  padding: EdgeInsets.only(top: 16.0),
                   child: Text(
                     'Description : ',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Text(restaurant.description),
-                Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
+                const Padding(
+                    padding: EdgeInsets.only(top: 16.0),
                     child: Text(
                       'Menu :',
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -73,12 +73,12 @@ class RestaurantDetailWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 16.0),
                   child: Row(
                     children: [
-                      Text(
+                      const Text(
                         'Foods',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 70.0),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 70.0),
                         child: Text('Drinks',
                             style: TextStyle(fontWeight: FontWeight.bold)),
                       ),
@@ -102,7 +102,7 @@ class RestaurantDetailWidget extends StatelessWidget {
                       selectedTileColor: Colors.amber,
                       title: Text(
                         restaurant.menus.foods[index].name,
-                        style: TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: 15),
                       ),
                     );
                   },
@@ -119,7 +119,7 @@ class RestaurantDetailWidget extends StatelessWidget {
                       selectedTileColor: Colors.amber,
                       title: Text(
                         restaurant.menus.drinks[index].name,
-                        style: TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: 15),
                       ),
                     );
                   },
@@ -132,7 +132,7 @@ class RestaurantDetailWidget extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  child: Text(
+                  child: const Text(
                     'Comment',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
@@ -170,7 +170,7 @@ class RestaurantDetailWidget extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 1.0),
                             child: Text(review.date,
-                                style: TextStyle(fontSize: 12)),
+                                style: const TextStyle(fontSize: 12)),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 4.0),

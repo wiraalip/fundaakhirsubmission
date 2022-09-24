@@ -52,7 +52,7 @@ class CardRestaurant extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.location_on_outlined,
                             color: Colors.amber,
                             size: 15,
@@ -65,7 +65,7 @@ class CardRestaurant extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 8.0),
                       child: Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.star,
                             size: 15,
                             color: Colors.yellow,

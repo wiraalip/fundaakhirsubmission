@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:submission2/apiservice/apiservice.dart';
 import 'package:submission2/provider/listprovider.dart';
 import 'package:submission2/provider/restaurantprovider.dart';
-import 'package:submission2/widget/restaurantsearch.dart';
+import 'package:submission2/widget/restaurantlist.dart';
 
 class RestaurantSearchPage extends StatefulWidget {
   const RestaurantSearchPage({super.key});
@@ -28,10 +28,10 @@ class _RestaurantSearchPageState extends State<RestaurantSearchPage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
-                  child: Container(
+                  child: Expanded(
                     child: TextField(
                       controller: controller,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: 'Search',
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -65,7 +65,7 @@ class _RestaurantSearchPageState extends State<RestaurantSearchPage> {
                             itemCount: state.result!.restaurants.length,
                             itemBuilder: (context, index) {
                               var resto = state.result!.restaurants[index];
-                              return RestaurantSearch(restaurant: resto);
+                              return CardRestaurant(restaurant: resto);
                             },
                           );
                         } else if (state.state == ResultState.noData) {
@@ -73,7 +73,7 @@ class _RestaurantSearchPageState extends State<RestaurantSearchPage> {
                         } else if (state.state == ResultState.error) {
                           return Center(child: Text(state.message));
                         } else {
-                          return Center(
+                          return const Center(
                             child: Text('No Internet'),
                           );
                         }
