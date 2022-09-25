@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:submission2/models/detailclass.dart';
 import 'package:submission2/models/listclass.dart';
 import 'package:http/http.dart' as http;

@@ -28,25 +28,23 @@ class _RestaurantSearchPageState extends State<RestaurantSearchPage> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0),
-                  child: Expanded(
-                    child: TextField(
-                      controller: controller,
-                      decoration: const InputDecoration(
-                          hintText: 'Search',
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          suffixIcon: Icon(
-                            Icons.search_outlined,
-                          )),
-                      onChanged: (String query) {
-                        if (query.isNotEmpty) {
-                          setState(() {
-                            output = query;
-                          });
-                          state.fetchRestaurant(output);
-                        }
-                      },
-                    ),
+                  child: TextField(
+                    controller: controller,
+                    decoration: const InputDecoration(
+                        hintText: 'Search',
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        suffixIcon: Icon(
+                          Icons.search_outlined,
+                        )),
+                    onChanged: (String query) {
+                      if (query.isNotEmpty) {
+                        setState(() {
+                          output = query;
+                        });
+                        state.fetchRestaurant(output);
+                      }
+                    },
                   ),
                 ),
                 (output.isEmpty)
