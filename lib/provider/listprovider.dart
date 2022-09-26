@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/widgets.dart';
+import 'package:http/http.dart';
 import 'package:submission2/apiservice/apiservice.dart';
 import 'package:submission2/models/listclass.dart';
 
@@ -26,7 +27,7 @@ class RestaurantProvider extends ChangeNotifier {
     try {
       _state = ResultState.loading;
       notifyListeners();
-      final restaurant = await service.getAllData();
+      final restaurant = await service.getAllData(Client());
       if (restaurant.restaurants.isEmpty) {
         _state = ResultState.noData;
         notifyListeners();
