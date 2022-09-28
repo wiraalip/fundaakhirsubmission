@@ -35,4 +35,14 @@ void main() {
     final result = await apiService.getAllData(http.Client());
     expect(result, isA<list.Welcome>());
   });
+
+  test('throws an exception', () async {
+    final client = MockClient();
+
+    when(client.get(Uri.parse('https://restaurant-api.dicoding.dev/list')))
+        .thenAnswer((_) async => http.Response('Not Found', 404));
+
+    final call = apiService.getAllData(client);
+    expect(() => call, throwsA(isInstanceOf<Exception>()));
+  });
 }
