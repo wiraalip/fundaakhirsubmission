@@ -11,7 +11,7 @@ class Service {
 
   static const String _baseUrl = 'https://restaurant-api.dicoding.dev/';
 
-  Future<Welcome> getAllData(http.Client client) async {
+  Future<Welcome> getAllData() async {
     final response = await client.get(Uri.parse('${_baseUrl}list'));
     if (response.statusCode == 200) {
       return Welcome.fromJson(json.decode(response.body));

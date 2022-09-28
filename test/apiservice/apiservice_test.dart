@@ -6,43 +6,43 @@ import 'package:submission2/apiservice/apiservice.dart';
 import 'package:submission2/models/listclass.dart' as list;
 import 'apiservice_test.mocks.dart';
 
-class ApiTest extends Mock implements http.Client {}
-
 @GenerateMocks([http.Client])
 void main() {
-  ApiTest client;
-  Service apiService;
+  final client = MockClient();
+  final apiService = Service(client);
 
-  final dummyListJsonInString = list.Welcome(
-      error: false,
-      message: "message",
-      count: 1,
-      restaurants: <list.Restaurant>[]);
-
-  client = ApiTest();
-  apiService = Service(client);
-
-  setUp(() {
-    client = ApiTest();
-    apiService = Service(client);
-  });
   test('apiservice ...', () async {
-    final client = MockClient();
-
     when(client.get(Uri.parse('https://restaurant-api.dicoding.dev/list')))
-        .thenAnswer(
-            (_) async => http.Response(dummyListJsonInString.toString(), 200));
-    final result = await apiService.getAllData(http.Client());
-    expect(result, isA<list.Welcome>());
+        .thenAnswer((_) async => http.Response('''{
+    "error": false,
+    "message": "success",
+    "count": 20,
+    "restaurants": [
+        {
+            "id": "rqdv5juczeskfw1e867",
+            "name": "Melting Pot",
+            "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. ...",
+            "pictureId": "14",
+            "city": "Medan",
+            "rating": 4.2
+        },
+        {
+            "id": "s1knt6za9kkfw1e867",
+            "name": "Kafe Kita",
+            "description": "Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. ...",
+            "pictureId": "25",
+            "city": "Gorontalo",
+            "rating": 4
+        }
+    ]
+} ''', 200));
+    expect(await apiService.getAllData(), isA<list.Welcome>());
   });
 
   test('throws an exception', () async {
-    final client = MockClient();
-
     when(client.get(Uri.parse('https://restaurant-api.dicoding.dev/list')))
         .thenAnswer((_) async => http.Response('Not Found', 404));
 
-    final call = apiService.getAllData(client);
-    expect(() => call, throwsA(isInstanceOf<Exception>()));
+    expect(apiService.getAllData(), throwsA(isInstanceOf<Exception>()));
   });
 }

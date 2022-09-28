@@ -29,7 +29,7 @@ class BackgroundService {
   static Future<void> callback() async {
     print('Alarm fired!');
     final NotificationHelper notificationHelper = NotificationHelper();
-    var result = await Service(Client()).getAllData(Client());
+    var result = await Service(Client()).getAllData();
     await notificationHelper.showNotification(
         flutterLocalNotificationsPlugin, result);
 
